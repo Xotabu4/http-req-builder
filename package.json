@@ -1,13 +1,18 @@
 {
-  "name": "api-request-builder",
-  "version": "1.0.0",
+  "name": "http-req-builder",
+  "version": "1.0.1",
   "description": "Builder for API requests, i use it in API testing projects",
-  "main": "index.js",
-  "types": "index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Xotabu4/http-request-builder"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "engines": {
     "node": ">=14.6"
   },
   "scripts": {
+    "prepare": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Oleksandr Khotemskyi <xotabu4@gmail.com>",
@@ -17,6 +22,7 @@
     "tough-cookie": "4.0.0"
   },
   "devDependencies": {
+    "@types/node": "^14.14.20",
     "typescript": "^4.1.3"
   }
 }

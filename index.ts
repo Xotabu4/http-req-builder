@@ -46,17 +46,7 @@ export abstract class BaseHttpRequest {
     }
     public abstract body(body: any): this;
     public async send<T = any>(): Promise<Response<T>> {
-        const errorStack = new Error().stack as string;
-        const errorStackArray = errorStack.split('\n');
-        // Excluding this method from stack, for better stacktraces
-        const filteredStack = errorStackArray.slice(0, 1).concat(errorStackArray.slice(2, errorStackArray.length)).join('\n')
-        try {
-            return await got<T>(this.options as any)
-        } catch (requestError) {
-            requestError.message = `[${requestError.request?.options?.method}][${requestError?.request?.requestUrl}] => ${requestError.message} ${JSON.stringify(requestError?.response?.body)}`
-            requestError.stack = filteredStack;
-            throw requestError
-        }
+        return got<T>(this.options as any)
     }
 }
 
