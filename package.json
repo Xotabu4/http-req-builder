@@ -3,13 +3,20 @@
   "version": "1.0.0",
   "description": "Builder for API requests, i use it in API testing projects",
   "main": "index.js",
+  "types": "index.d.ts",
+  "engines": {
+    "node": ">=14.6"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Oleksandr Khotemskyi <xotabu4@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "got": "^11.8.1",
-    "tough-cookie": "^4.0.0"
+    "got": "11.8.1",
+    "tough-cookie": "4.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.1.3"
   }
 }

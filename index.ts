@@ -1,11 +1,10 @@
-import type { Options, Method, GotRequestFunction, CancelableRequest, Response } from 'got';
+import type { Options, Method, Response, GotRequestFunction } from 'got';
 import got from 'got';
 import { CookieJar } from 'tough-cookie';
 
 type ElementOf<T> = T extends (infer E)[] ? E : T;
-export type BaseResponse<T> = CancelableRequest<Response<T>>
 
-export abstract class BaseRequest {
+export abstract class BaseHttpRequest {
     protected options: ElementOf<Parameters<GotRequestFunction>> = {
         http2: true
     };
@@ -46,7 +45,7 @@ export abstract class BaseRequest {
         return this
     }
     public abstract body(body: any): this;
-    public async send<T = unknown>(): Promise<BaseResponse<T>> {
+    public async send<T = any>(): Promise<Response<T>> {
         const errorStack = new Error().stack as string;
         const errorStackArray = errorStack.split('\n');
         // Excluding this method from stack, for better stacktraces
@@ -61,7 +60,7 @@ export abstract class BaseRequest {
     }
 }
 
-export class JsonRequest extends BaseRequest {
+export class JsonRequest extends BaseHttpRequest {
     constructor() {
         super()
         this.options = {
