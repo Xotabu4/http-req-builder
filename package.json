@@ -1,10 +1,10 @@
 {
   "name": "http-req-builder",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Builder for API requests, i use it in API testing projects",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Xotabu4/http-request-builder"
+    "url": "https://github.com/Xotabu4/http-req-builder"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
