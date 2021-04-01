@@ -45,14 +45,18 @@ class MyRequest extends JsonRequest {
     constructor() {
         super()
         // See https://github.com/sindresorhus/got#hooks
-        this.options.hooks = {
-            beforeRequest: [options => {
-                console.time(`Request took`)
-            }],
-            afterResponse: [response => {
-                console.timeEnd(`Request took`)
-                return response;
-            }]
+        this.options = {
+            // Keeping options from JsonRequest 
+            ...this.options,
+            hooks: {
+                beforeRequest: [options => {
+                    console.time(`Request took`)
+                }],
+                afterResponse: [response => {
+                    console.timeEnd(`Request took`)
+                    return response;
+                }]
+            }
         }
     }
 }
