@@ -27,7 +27,7 @@ assert(resp.body.json.testing)
 assert(resp.body.args.hello == 'world')  
 ```
 
-- Start building your requests with `new JsonRequest()`
+- Start building your requests with `new JsonRequest()` or `new FormRequest()`
 - Specify parameters with methods:
 `prefixUrl` `url` `cookieJar` `method` `headers` `bearerToken` `searchParams` `body`
 - Send constructed request with `.send()`, optionaly specify response body type with `.send<MyResponseBodyType>`
@@ -36,7 +36,7 @@ assert(resp.body.args.hello == 'world')
 
 # Extending
 
-Feel free to `extend` `BaseHttpRequest` or `JsonRequest`, and add/override methods. For example, lets add simplest logging on each request:
+Feel free to `extend` `BaseHttpRequest` or `FormRequest, JsonRequest`, and add/override methods. For example, lets add simplest logging on each request:
 
 ```typescript
 import { JsonRequest } from 'http-req-builder'

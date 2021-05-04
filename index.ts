@@ -1,6 +1,7 @@
 import type { Options, Method, Response, GotRequestFunction } from 'got';
 import got from 'got';
 import { CookieJar } from 'tough-cookie';
+import * as FormData  from 'form-data';
 
 type ElementOf<T> = T extends (infer E)[] ? E : T;
 
@@ -76,6 +77,13 @@ export class JsonRequest extends BaseHttpRequest {
     }
     public body(body: any): this {
         this.options.json = body;
+        return this
+    }
+}
+
+export class FormRequest extends BaseHttpRequest {
+    public body(form: FormData): this {
+        this.options.form = form;
         return this
     }
 }

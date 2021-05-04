@@ -1,5 +1,5 @@
 import { JsonRequest } from "./index"
-import {strict as assert} from "assert"
+import { strict as assert } from "assert"
 
 // Make normal tests
 async function test() {
@@ -19,10 +19,10 @@ async function test() {
             "testing": true
         })
         .send()
-    
+
     assert(resp.body.headers['User-Agent'].includes('got'))
-    assert(resp.body.json.testing)  
-    assert(resp.body.args.hello == 'world')  
+    assert(resp.body.json.testing)
+    assert(resp.body.args.hello == 'world')
 
     class MyRequest extends JsonRequest {
         constructor() {
@@ -39,7 +39,7 @@ async function test() {
             }
         }
     }
-    
+
     await new MyRequest()
         .url('https://httpbin.org/get')
         .send()
