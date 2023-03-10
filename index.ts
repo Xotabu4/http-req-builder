@@ -52,7 +52,6 @@ export abstract class BaseHttpRequest {
         try {
             return await got<T>(this.options as any)
         } catch (err) {
-            err.stack = stack
             if (err instanceof got.HTTPError) {
                 err.message = `
                 [${err?.options?.method}]: ${err?.options?.url} => ${err?.response?.statusCode} 
@@ -62,6 +61,7 @@ export abstract class BaseHttpRequest {
                 ${err?.response?.rawBody?.toString()}
                 `
             }
+            err.stack = `${err.message} \n${stack}`
             throw err
         }
     }
